@@ -1,3 +1,13 @@
+---
+title: Smart Tiffin Packer
+emoji: 🍱
+colorFrom: yellow
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Smart Tiffin Packing Environment 🍱🤖
 
 > **Semantic-aware constrained packing under real-world constraints**
