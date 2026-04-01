@@ -1,0 +1,28 @@
+[project]
+name = "tiffin-packer"
+version = "1.0.0"
+description = "Smart Tiffin Packing Environment — OpenEnv compliant RL environment for semantic-aware constrained packing"
+authors = [{name = "CtrlAltWin", email = "team@ctrlaltwin.dev"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "openenv-core>=0.1.0",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.0.0",
+    "numpy>=1.24.0",
+    "requests>=2.28.0",
+    "openai>=1.0.0",
+    "pybullet>=3.2.5",
+]
+
+[project.scripts]
+tiffin-packer = "server.app:main"
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["tiffin_packer*", "server*"]

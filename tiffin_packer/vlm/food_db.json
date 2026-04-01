@@ -1,0 +1,137 @@
+{
+  "rice": {
+    "type": "solid",
+    "fragility": 0.1,
+    "preferred_container": "deep",
+    "volume_ml": 200,
+    "temperature": "hot",
+    "color": "white",
+    "special_notes": "Staple grain, can be packed densely"
+  },
+  "sambar": {
+    "type": "liquid",
+    "fragility": 0.0,
+    "preferred_container": "sealed",
+    "volume_ml": 150,
+    "temperature": "hot",
+    "color": "orange",
+    "special_notes": "Lentil-based stew, will spill if container not sealed"
+  },
+  "curd": {
+    "type": "semi-solid",
+    "fragility": 0.3,
+    "preferred_container": "sealed",
+    "volume_ml": 100,
+    "temperature": "cold",
+    "color": "white",
+    "special_notes": "Dairy product, must be kept cold and away from hot items"
+  },
+  "chapati": {
+    "type": "solid",
+    "fragility": 0.7,
+    "preferred_container": "flat",
+    "volume_ml": 80,
+    "temperature": "room",
+    "color": "brown",
+    "special_notes": "Flatbread, fragile when stacked under heavy items"
+  },
+  "pickle": {
+    "type": "semi-solid",
+    "fragility": 0.2,
+    "preferred_container": "sealed",
+    "volume_ml": 30,
+    "temperature": "room",
+    "color": "red",
+    "special_notes": "Strong flavor, should not contaminate other items"
+  },
+  "dal": {
+    "type": "liquid",
+    "fragility": 0.0,
+    "preferred_container": "sealed",
+    "volume_ml": 120,
+    "temperature": "hot",
+    "color": "yellow",
+    "special_notes": "Lentil soup, needs sealed container"
+  },
+  "rasam": {
+    "type": "liquid",
+    "fragility": 0.0,
+    "preferred_container": "sealed",
+    "volume_ml": 100,
+    "temperature": "hot",
+    "color": "dark_red",
+    "special_notes": "Thin spicy soup, will leak easily"
+  },
+  "poriyal": {
+    "type": "solid",
+    "fragility": 0.5,
+    "preferred_container": "flat",
+    "volume_ml": 80,
+    "temperature": "hot",
+    "color": "green",
+    "special_notes": "Stir-fried vegetables, moderately fragile"
+  },
+  "papad": {
+    "type": "solid",
+    "fragility": 0.9,
+    "preferred_container": "flat",
+    "volume_ml": 20,
+    "temperature": "room",
+    "color": "golden",
+    "special_notes": "Very fragile crispy disc, breaks easily under pressure"
+  },
+  "raita": {
+    "type": "semi-solid",
+    "fragility": 0.2,
+    "preferred_container": "sealed",
+    "volume_ml": 80,
+    "temperature": "cold",
+    "color": "pale_green",
+    "special_notes": "Yogurt-based, must be kept cold"
+  },
+  "idli": {
+    "type": "solid",
+    "fragility": 0.4,
+    "preferred_container": "deep",
+    "volume_ml": 120,
+    "temperature": "hot",
+    "color": "white",
+    "special_notes": "Steamed rice cake, soft but holds shape"
+  },
+  "chutney": {
+    "type": "semi-solid",
+    "fragility": 0.1,
+    "preferred_container": "sealed",
+    "volume_ml": 50,
+    "temperature": "room",
+    "color": "green",
+    "special_notes": "Condiment, strong flavor, needs isolation"
+  },
+  "biryani": {
+    "type": "solid",
+    "fragility": 0.3,
+    "preferred_container": "deep",
+    "volume_ml": 250,
+    "temperature": "hot",
+    "color": "saffron",
+    "special_notes": "Fragrant rice dish, needs larger container"
+  },
+  "curry": {
+    "type": "liquid",
+    "fragility": 0.0,
+    "preferred_container": "sealed",
+    "volume_ml": 150,
+    "temperature": "hot",
+    "color": "brown",
+    "special_notes": "Gravy-based dish, will spill without sealed container"
+  },
+  "salad": {
+    "type": "solid",
+    "fragility": 0.6,
+    "preferred_container": "flat",
+    "volume_ml": 60,
+    "temperature": "cold",
+    "color": "mixed",
+    "special_notes": "Fresh vegetables, keep away from hot items"
+  }
+}
