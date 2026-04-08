@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-tiffin-packer = "server.app:main"
+server = "server.app:main"
 
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
