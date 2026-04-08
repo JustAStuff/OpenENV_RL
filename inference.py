@@ -23,6 +23,7 @@ import time
 import traceback
 
 import requests
+from openai import OpenAI
 
 # ---------------------------------------------------------------------------
 # Required environment variables
@@ -31,6 +32,11 @@ API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME = os.environ.get("MODEL_NAME", "gpt-4o")
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 ENV_URL = os.environ.get("ENV_URL", "http://localhost:7860")
+
+if not HF_TOKEN:
+    print("WARNING: HF_TOKEN not set. LLM calls will fail.", flush=True)
+
+client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
 
 # ---------------------------------------------------------------------------
 # System prompt
@@ -64,14 +70,6 @@ STRATEGY:
 Respond with ONLY valid JSON. No explanation, no markdown, no extra text."""
 
 
-def get_client():
-    """Lazily create an OpenAI client. Returns None if openai is unavailable."""
-    try:
-        from openai import OpenAI
-        return OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN or "dummy")
-    except Exception as e:
-        print(f"WARNING: Could not create OpenAI client: {e}", flush=True)
-        return None
 
 
 def parse_action(text: str) -> dict:
@@ -110,7 +108,7 @@ def parse_action(text: str) -> dict:
     return {"command": "observe"}
 
 
-def run_episode(task_id: str, client) -> dict:
+def run_episode(task_id: str) -> dict:
     """Run one episode of the tiffin packing task."""
     # Emit [START] structured output for the validator
     print(f"[START] task={task_id}", flush=True)
@@ -162,8 +160,6 @@ def run_episode(task_id: str, client) -> dict:
 
             # Get LLM decision
             try:
-                if client is None:
-                    raise RuntimeError("No OpenAI client available")
                 response = client.chat.completions.create(
                     model=MODEL_NAME,
                     messages=messages,
@@ -276,14 +272,13 @@ def main():
     print(f"  Env:   {ENV_URL}", flush=True)
     print("=" * 60, flush=True)
 
-    # Create client lazily — don't crash on import
-    client = get_client()
+
 
     start_time = time.time()
     results = {}
 
     for task_id in ["easy", "medium", "hard"]:
-        result = run_episode(task_id, client)
+        result = run_episode(task_id)
         results[task_id] = result
 
     elapsed = time.time() - start_time
