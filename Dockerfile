@@ -7,9 +7,9 @@ FROM python:3.10-slim
 RUN useradd -m -u 1000 user
 ENV PATH="/home/user/.local/bin:$PATH"
 
-# System dependencies for PyBullet (headless OpenGL)
+# System dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
