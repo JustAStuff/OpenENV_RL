@@ -132,8 +132,8 @@ def run_episode(task_id: str) -> dict:
             obs = result.get("observation", result)
         except Exception as e:
             print(f"  ERROR: Failed to reset environment: {e}", flush=True)
-            print(f"[END] task={task_id} score=0.0 steps=0", flush=True)
-            return {"task_id": task_id, "total_reward": 0.0, "reward": 0.0, "score": 0.0, "steps": 0, "error": str(e)}
+            print(f"[END] task={task_id} score=0.0001 steps=0", flush=True)
+            return {"task_id": task_id, "total_reward": 0.0, "reward": 0.0, "score": 0.0001, "steps": 0, "error": str(e)}
 
         # Initialize conversation
         init_scene = obs.get("scene_description", "")
@@ -231,6 +231,8 @@ def run_episode(task_id: str) -> dict:
 
         # Extract final score
         final_score = obs.get("metadata", {}).get("final_score", 0.0)
+        # Ensure score is strictly between 0 and 1 (exclusive) for the validator
+        final_score = max(0.0001, min(0.9999, float(final_score)))
         grade_breakdown = obs.get("metadata", {}).get("grade_breakdown", {})
 
         print(f"\n  {'─'*40}", flush=True)
@@ -259,8 +261,8 @@ def run_episode(task_id: str) -> dict:
         # Catch-all: ensure [END] is ALWAYS emitted even on unexpected errors
         print(f"  FATAL ERROR in episode {task_id}: {e}", flush=True)
         traceback.print_exc()
-        print(f"[END] task={task_id} score=0.0 steps={step}", flush=True)
-        return {"task_id": task_id, "total_reward": 0.0, "reward": 0.0, "score": 0.0, "steps": step, "error": str(e)}
+        print(f"[END] task={task_id} score=0.0001 steps={step}", flush=True)
+        return {"task_id": task_id, "total_reward": 0.0, "reward": 0.0, "score": 0.0001, "steps": step, "error": str(e)}
 
 
 def main():
