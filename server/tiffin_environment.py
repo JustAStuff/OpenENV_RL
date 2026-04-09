@@ -40,13 +40,24 @@ class TiffinPackingEnvironment(Environment):
     Supports 3 tasks: easy, medium, hard.
     """
 
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+
     def __init__(self):
+        if getattr(self, "_initialized", False):
+            return
         super().__init__()
         self.sim = PackingSimulation()
         self.vlm = FoodClassifier()
         self._state = TiffinState()
         self._identified_items: set = set()
         self._task_config = None
+        self._initialized = True
 
     def reset(
         self,
